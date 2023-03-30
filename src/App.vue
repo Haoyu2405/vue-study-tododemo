@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="todoapp">
+    <TodoHeader></TodoHeader>
+    <TodoMain></TodoMain>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// 1.目标:创建工程 - 准备相关组件文件 - 标签+样式（静态）
+// 1.0 样式引入
+import './styles/base.css'
+import './styles/index.css'
+// 1.1 组件引入
+import TodoHeader from './components/TodoHeader.vue'
+import TodoMain from './components/TodoMain.vue'
+import TodoFooter from './components/TodoFooter.vue'
 export default {
-  name: 'App',
+  data() {
+    return {}
+  },
+  methods: {},
+  // 1.2组件注册
   components: {
-    HelloWorld
-  }
+    TodoHeader,
+    TodoMain,
+    TodoFooter,
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>
