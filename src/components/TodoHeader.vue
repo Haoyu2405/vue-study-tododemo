@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/valid-v-on -->
 <template>
   <header class="header">
     <h1>todos</h1>
@@ -10,17 +9,15 @@
     <!-- 3.0 键盘事件 - 回车按键 
          3.1 输入框获取值 - v-model
          autofocus - 输入框内输入光标自动闪烁
+         方法1 - v-model.trim 去首尾空格 
     -->
     <input
       class="new-todo"
       placeholder="输入任务名称-回车确认"
       autofocus
       @keydown.enter="downFn"
-      v-model="task"
+      v-model.trim="task"
     />
-    <!-- 去空格 -->
-    <!-- @input="task = $event.target.value"
-      :value="trimmedTask" -->
   </header>
 </template>
 
@@ -53,20 +50,19 @@ export default {
         // 9.4 小选框和全选绑定，
         // every方法->遇到有不符合条件的直接返回false，否则返回true
         return (
-          this.arr.length !== 0 &&
-          this.arr.every((obj) => obj.isDone === true)
+          this.arr.length !== 0 && this.arr.every((obj) => obj.isDone === true)
         )
       },
     },
-    // 去空格
+    // 方法2 - 计算属性去空格
     // trimmedTask: {
-    // get() {
-    //   return this.task.trim();
+    //   set(value) {
+    //     this.task = value.trim()
+    //   },
+    //   get() {
+    //     return this.task.trim()
+    //   },
     // },
-    // set(value) {
-    //   this.task = value.trim();
-    // }
-  // }
   },
   // 9.2 父->子,子arr接收父list的数据
   props: ['arr'],
